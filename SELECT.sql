@@ -26,7 +26,7 @@ WHERE name NOT LIKE '% %';
 --WHERE LOWER(title) LIKE '%мой%' OR LOWER(title) LIKE '%my%';
 
 --Условие 5 - Вариант 1--
-SELECT title
+SELECT DISTINCT title
 FROM tracks
 WHERE 
    title ILIKE 'my'            -- только слово
@@ -39,12 +39,12 @@ WHERE
    OR title ILIKE '% мой %';
 
 --Условие 5 - Вариант 2--
-SELECT title
+SELECT DISTINCT title
 FROM tracks
 WHERE string_to_array(lower(title), ' ') && ARRAY['my', 'мой'];
 
 --Условие 5 - Вариант 3--
-SELECT title
+SELECT DISTINCT title
 FROM tracks
 WHERE title ~* '\m(my|мой)\M';
 
